@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FlashMaster | Study App</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+       <i class="fa-solid fa-layer-group"></i> FlashMaster
+    </div>
+   <button id="theme-toggle" class="icon-btn" title="Toggle Dark Mode">
+       <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <main class="container">
+    <!-- Left Side: Study Area -->
+    <section class="study-area">
+       <div class="controls-top">
+           <button id="shuffle-btn" class="btn-secondary" title="Shuffle Cards">
+           <i class="fa-solid fa-shuffle"></i> Shuffle
+         </button>
+         <div class="card-counter">
+            Card <span id="current-card-num">1</span> of <span id="total-cards-num">0</span>
+         </div>
+      </div>
+
+      <div class="card-container" id="card-container">
+         <div class="card" id="flashcard">
+           <div class="card-face card-front">
+               <h3 id="card-question">Question goes here?</h3>
+               <p class="hint">Click to flip</p>
+           </div>
+           <div class="card-face card-back">
+               <h3 id="card-answer">Answer goes here.</h3>
+           </div>
+         </div>
+      </div>
+
+      <div class="controls-bottom">
+         <button class="btn-nav" id="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+
+         <button class="btn-primary" id="flip-btn">Flip Card</button>
+
+         <button class="btn-nav" id="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+
+  <!-- Quiz Controls (Hidden by default) -->
+  <div class="quiz-controls hidden" id="quiz-controls">
+    <p>Did you know this?</p>
+    <div class="quiz-buttons">
+      <button class="btn-incorrect" id="mark-wrong">
+           <i class="fa-solid fa-xmark"></i> Incorrect
+      </button>
+      <button class="btn-correct" id="mark-correct">
+           <i class="fa-solid fa-check"></i> Correct
+      </button>
+    </div>
+  </div>
+
+  <div class="keyboard-hint">
+    <span><kbd>Space</kbd> Flip</span>
+    <span><kbd>←</kbd> Prev</span>
+    <span><kbd>→</kbd> Next</span>
+  </div>
+</section>
+
+<!-- Right Side: Dashboard & Creation -->
+<section class="dashboard">
+  <!-- Stats Panel -->
+  <div class="stats-panel">
+    <h2>Study Progress</h2>
+    <div class="stat-grid">
+      <div class="stat-box">
+               <span class="stat-val" id="stat-total">0</span>
+               <span class="stat-label">Total Cards</span>
+           </div>
+           <div class="stat-box">
+               <span class="stat-val" id="stat-studied">0</span>
+               <span class="stat-label">Studied</span>
+           </div>
+           <div class="stat-box">
+               <span class="stat-val" id="stat-accuracy">0%</span>
+               <span class="stat-label">Accuracy</span>
+           </div>
+         </div>
+         <div class="progress-bar-container">
+           <div class="progress-bar" id="study-progress-bar" style="width: 0%"></div>
+         </div>
+      </div>
+
+      <!-- Add Card Form -->
+      <div class="add-card-panel">
+         <h2>Create New Card</h2>
+         <form id="add-card-form">
+           <div class="form-group">
+               <label for="input-question">Question (Front)</label>
+               <textarea id="input-question" placeholder="Enter question..." required></textarea>
+           </div>
+           <div class="form-group">
+                   <label for="input-answer">Answer (Back)</label>
+             <textarea id="input-answer" placeholder="Enter answer..." required></textarea>
+              </div>
+           <button type="submit" class="btn-primary full-width">Add Flashcard</button>
+            </form>
+          </div>
+
+          <!-- Card List -->
+          <div class="card-list-panel">
+            <h2>Manage Cards</h2>
+            <ul id="card-list" class="card-list">
+              <!-- List items injected via JS -->
+            </ul>
+        <button id="reset-stats-btn" class="btn-text">Reset Progress</button>
+          </div>
+     </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
